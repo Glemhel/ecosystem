@@ -32,6 +32,7 @@ public class SoilS : BlockS {
             //песок
             this.state = "песок";
         }
+        return;
     }
     // Use this for initialization
     void Start () {

@@ -79,6 +79,7 @@ public class TreeS : MonoBehaviour {
     void Death(string reason)
     {
         //ToDo put a reson of death to use
+        //matter what reason?
         Destroy(this.transform.gameObject); //Ideally start a couroutine, changing colour
                                             // and visuals of the tree
     }

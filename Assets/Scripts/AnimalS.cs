@@ -25,6 +25,8 @@ public class AnimalS : MonoBehaviour
     [SerializeField]
     bool flesh_eating;
     [SerializeField]
+    int model;//int ли?
+    [SerializeField]
     string specimen;
     Vector3 destination;
     Vector3 coordinates;
@@ -37,18 +39,20 @@ public class AnimalS : MonoBehaviour
     {
         if (a1.specimen == a2.specimen && a1.sex != a2.sex)
         {
-            AnimalS a3 = new AnimalS();
-         //   a3.model = a1.model; //fix model--add to SerField and comment
-            a3.health_max = (a2.health_max + a1.health_max) / 4;
-            a3.satiety = (a2.satiety + a1.satiety) / 2;
-          //  a3.sex = random(1); //ToDo Fix Random
-            a3.temperature = (a2.temperature + a1.temperature) / 2;
-            a3.herbivore = a1.herbivore;
-            a3.flesh_eating = a1.flesh_eating;
-            a3.alive = true;
-            a3.age = 0;
-            a3.age_max = a1.age_max;
-            a3.size = 1;
+            AnimalS a3 = new AnimalS
+            {
+                //   a3.model = a1.model; //fix model--add to SerField and comment
+                health_max = (a2.health_max + a1.health_max) / 4,
+                satiety = (a2.satiety + a1.satiety) / 2,
+                sex=Random.Range(0,1)==0,
+                temperature = (a2.temperature + a1.temperature) / 2,
+                herbivore = a1.herbivore,
+                flesh_eating = a1.flesh_eating,
+                alive = true,
+                age = 0,
+                age_max = a1.age_max,
+                size = 1
+            };
             a3.health = a3.health_max - a3.health_max / 4;
             return a3;
         }
