@@ -281,6 +281,7 @@ MonoBehaviour:
   rainmaker: {fileID: 1166594956}
   soil: {fileID: 282171674}
   stone: {fileID: 0}
+  deer: {fileID: 1669463093378998, guid: 65228b8c4c05d9545925d1349f480358, type: 2}
 --- !u!1001 &930703780
 Prefab:
   m_ObjectHideFlags: 0

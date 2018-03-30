@@ -8,6 +8,9 @@ using UnityEngine;
 public class AnimalS : MonoBehaviour
 {
     [SerializeField]
+    GameObject deer;
+    GameObject model;
+    [SerializeField]
     int health_max;
     int health;
     [SerializeField]
@@ -25,8 +28,6 @@ public class AnimalS : MonoBehaviour
     [SerializeField]
     bool flesh_eating;
     [SerializeField]
-    int model;//int ли?
-    [SerializeField]
     string specimen;
     Vector3 destination;
     Vector3 coordinates;
@@ -35,13 +36,31 @@ public class AnimalS : MonoBehaviour
     int time_not_alive;
     [SerializeField]
     int satiety;
+    public static AnimalS CreateNew()
+    {
+        AnimalS animal = new AnimalS
+        {
+            health_max = 100,
+            satiety = 20,
+            sex = Random.Range(0, 1) == 0,
+            temperature = 42,
+            herbivore = true,
+            flesh_eating = true,
+            alive = true,
+            age = 5,
+            age_max = 15,
+            size = 1,
+           // model = deer,//нужно перенести модельку отдельно в оленя, её брать из её Ser field, а тут не маяться гейством
+        };
+        return animal;
+    }
     public AnimalS Reproduction(AnimalS a1, AnimalS a2)
     {
         if (a1.specimen == a2.specimen && a1.sex != a2.sex)
         {
             AnimalS a3 = new AnimalS
             {
-                //   a3.model = a1.model; //fix model--add to SerField and comment
+                 //fix model--add to SerField and comment
                 health_max = (a2.health_max + a1.health_max) / 4,
                 satiety = (a2.satiety + a1.satiety) / 2,
                 sex=Random.Range(0,1)==0,

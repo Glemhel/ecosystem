@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: 225b6a0d034cc124493174dad2af9eb6
-timeCreated: 1522213674
+timeCreated: 1522434300
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - skybox_clear: {fileID: 2100000, guid: e6d0d6fe1132ba749b82c6387677808f, type: 2}
+  - skybox_rainy: {fileID: 2100000, guid: ece5f655714eb0d48bb27b6a40187104, type: 2}
+  - rainmaker: {instanceID: 0}
+  - soil: {fileID: 1756433805874852, guid: a6a5e25b85aa3eb448e8227083ae1f70, type: 2}
+  - stone: {instanceID: 0}
+  - deer: {fileID: 1669463093378998, guid: 65228b8c4c05d9545925d1349f480358, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
