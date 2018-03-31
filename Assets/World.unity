@@ -289,8 +289,16 @@ MonoBehaviour:
   skybox_rainy: {fileID: 2100000, guid: ece5f655714eb0d48bb27b6a40187104, type: 2}
   rainmaker: {fileID: 1166594956}
   soil: {fileID: 1710907773341994, guid: ab2dcd2dad1ea804c9418ff62a07273e, type: 2}
-  stone: {fileID: 0}
+  stone: {fileID: 1710907773341994, guid: ab2dcd2dad1ea804c9418ff62a07273e, type: 2}
   deer: {fileID: 1669463093378998, guid: 65228b8c4c05d9545925d1349f480358, type: 2}
+  seed: 0
+  raindelay: 120
+  can_weather_change: 1
+  charact: {fileID: 520700856}
+--- !u!1 &520700856 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+  m_PrefabInternal: {fileID: 2062695104}
 --- !u!1001 &930703780
 Prefab:
   m_ObjectHideFlags: 0
@@ -506,7 +514,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_GravityMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
