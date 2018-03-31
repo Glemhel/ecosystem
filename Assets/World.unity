@@ -156,6 +156,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -215,7 +229,7 @@ Prefab:
     - target: {fileID: 11437536, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
       propertyPath: Camera
       value: 
-      objectReference: {fileID: 1114580423}
+      objectReference: {fileID: 1016631593}
     - target: {fileID: 11437536, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
       propertyPath: WindSoundVolumeModifier
       value: 0
@@ -226,16 +240,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 160098, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &282171674 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1756433805874852, guid: a6a5e25b85aa3eb448e8227083ae1f70,
-    type: 2}
-  m_PrefabInternal: {fileID: 930703780}
 --- !u!1 &411896026
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +288,7 @@ MonoBehaviour:
   skybox_clear: {fileID: 2100000, guid: e6d0d6fe1132ba749b82c6387677808f, type: 2}
   skybox_rainy: {fileID: 2100000, guid: ece5f655714eb0d48bb27b6a40187104, type: 2}
   rainmaker: {fileID: 1166594956}
-  soil: {fileID: 282171674}
+  soil: {fileID: 1710907773341994, guid: ab2dcd2dad1ea804c9418ff62a07273e, type: 2}
   stone: {fileID: 0}
   deer: {fileID: 1669463093378998, guid: 65228b8c4c05d9545925d1349f480358, type: 2}
 --- !u!1001 &930703780
@@ -354,6 +363,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6a5e25b85aa3eb448e8227083ae1f70, type: 2}
   m_IsPrefabParent: 0
+--- !u!20 &1016631593 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 2}
+  m_PrefabInternal: {fileID: 2062695104}
 --- !u!1 &1114580419
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +393,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1114580419}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1114580421
 Behaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +474,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.07
+      value: 13.83
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.z

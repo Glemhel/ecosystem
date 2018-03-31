@@ -13,22 +13,33 @@ public class World : MonoBehaviour {
     [SerializeField]
     GameObject soil, stone; //prefabs for blocks out of which the world consists
 
+    GameObject[,,] world = new GameObject[1000,100,1000]; //3-dimensional array of blocks that make up map
+
     [SerializeField]
-    GameObject deer;
+    GameObject deer; // prefab for deer
 
- //   GameObject[,,] world = new GameObject[100,100,100]; //3-dimensional array of blocks that make up map
+    GameObject[] animals = new GameObject[100]; // array of all animals that exist
 
-    GameObject[] animals = new GameObject[100];
-    int animalcount;
-	void Start () {
-        GenerateChunk(0, 0, 0, 20, 20);
-        GenerateDeer(10);
+    int animalcount; // number of currently existing animals
+
+    float seed; //seed is a thing used to generate world, it is generated once and forever
+    // the lower the value of seed is, the calmer generated landcape will be
+
+    float raindelay=10F;//delay wich determine when the rain will come again
+
+
+    void Start () {
+        StartCoroutine(ChangeWeather()); //start weather cycle
+        seed = Random.Range(0.01F, 0.1F); // generate a seed for map generation
+        GenerateChunk(0, 0, 0, 100, 100); //generate the map itself
+        GenerateDeer(10); //generate animals
     }
-
-
-    void FixedUpdate () {
+	
+	
+	void FixedUpdate () {
+        
         Animal_moves();
-	}
+    }
 
     void GenerateChunk(int startx, int startz, int starty, int wz, int wx)
     //a procedure for generating a chunk of blocks starting from block startz, startx, starty
@@ -39,13 +50,15 @@ public class World : MonoBehaviour {
             for (int j = 0; j <= wx; j++)
             {
                 GameObject newblock=soil;
+
                 int x=startx, y=starty, z=startz;
+
                 //a general formula to calculate height
-                y = Mathf.RoundToInt(Mathf.PerlinNoise(startz + i, startx + j)*150);
-                //multipling was implemented because PerlinNoise returns a number somewhere inbetween 0 and 1
-                //which after rounding go either to 0 or to 1 and therefore completely negate the purpose of PerlinNoise
-                newblock.transform.position = new Vector3(startz + i, startx + j, y);
-                //world[startz + i, startx + j, y] = newblock;
+                y = Mathf.RoundToInt(Mathf.PerlinNoise(startz + i*seed, startx + j * seed) *15);
+               
+                newblock.transform.position = new Vector3(startz + i, y, startx + j);
+                
+                world[startz + i, y, startx + j] = newblock;
                 Instantiate(newblock);
             }
     }
@@ -56,29 +69,35 @@ public class World : MonoBehaviour {
         for (int i = 0; i < num; i++)
         {
             GameObject newdeer = deer;
-           // newdeer=newdeer.Reproduction(deer,deer);
-            newdeer.transform.position = new Vector3(Random.Range(-50,50),0, Random.Range(-50, 50));
+            // newdeer=newdeer.Reproduction(deer,deer);
+            newdeer.transform.position = new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50));
             animals[animalcount++] = newdeer;
             Instantiate(newdeer);
         }
     }
-    void ChangeWeather() //If it is rainy changes to clear, if clear changes to rainy
+
+    IEnumerator ChangeWeather() //If it is rainy changes to clear, if clear changes to rainy
     {
-        //ToDo make it better with making rain go in and out smoother
-        if (RenderSettings.skybox == skybox_clear)
+        while (true)
         {
-            RenderSettings.skybox = skybox_rainy;
-            rainmaker.SetActive(true);
-        }
-        else
-        {
-            RenderSettings.skybox = skybox_clear;
-            rainmaker.SetActive(false);
+            //ToDo make it better with making rain go in and out smoother
+            if (!rainmaker.activeSelf)
+            {
+                RenderSettings.skybox = skybox_rainy;
+                rainmaker.SetActive(true);
+            }
+            else
+            {
+                RenderSettings.skybox = skybox_clear;
+                rainmaker.SetActive(false);
+            }
+            yield return new WaitForSeconds(raindelay);
         }
     }
+
     void Animal_moves()
     {
-        for (int i=0;i<animalcount;i++)
+        for (int i = 0; i < animalcount; i++)
         {
 
         }
